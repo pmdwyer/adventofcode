@@ -1,6 +1,7 @@
 #ifndef ADVENTOFCODE_UTILS_H
 #define ADVENTOFCODE_UTILS_H
 
+#include <algorithm>
 #include <fstream>
 #include <string>
 #include <sstream>

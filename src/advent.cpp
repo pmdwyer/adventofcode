@@ -1,5 +1,47 @@
 #include "advent.h"
 
+std::vector<char> aoc::get_badges(const std::vector<std::string>& rucksacks) {
+  std::vector<char> badges;
+  for (int group = 0; group < rucksacks.size() / 3; group++) {
+    int i = group * 3;
+    std::vector<char> first_two;
+    std::set<char> first_items(rucksacks[i].begin(), rucksacks[i].end());
+    std::set<char> second_items(rucksacks[i + 1].begin(), rucksacks[i + 1].end());
+    std::set<char> third_items(rucksacks[i + 2].begin(), rucksacks[i + 2].end());
+
+    std::set_intersection(first_items.begin(), first_items.end(),
+                          second_items.begin(), second_items.end(),
+                          std::back_inserter(first_two));
+
+    std::set_intersection(first_two.begin(), first_two.end(),
+                          third_items.begin(), third_items.end(),
+                          std::back_inserter(badges));
+  }
+  return badges;
+}
+
+std::vector<int> aoc::get_priorites(const std::vector<char>& cs) {
+  std::vector<int> ords;
+  std::transform(cs.begin(), cs.end(), std::back_inserter(ords), [](char c) {
+    return isupper(c) ? (c - '@' + 26) : (c - '`');
+  });
+  return ords;
+}
+
+std::vector<char> aoc::get_common_items(const std::vector<std::string>& rucksacks) {
+  std::vector<char> common;
+  for (const auto& rucksack : rucksacks) {
+    auto first_comp = rucksack.substr(0, rucksack.length() / 2);
+    auto second_comp = rucksack.substr(rucksack.length() / 2, rucksack.length() / 2);
+    std::set<char> first_items(first_comp.begin(), first_comp.end());
+    std::set<char> second_items(second_comp.begin(), second_comp.end());
+    std::set_intersection(first_items.begin(), first_items.end(),
+                          second_items.begin(), second_items.end(),
+                          std::back_inserter(common));
+  }
+  return common;
+}
+
 int aoc::calc_basic_round(int you, int them) {
   int score = you;
   if (you == them) {

@@ -7,13 +7,18 @@
 
 #include <algorithm>
 #include <functional>
+#include <set>
 #include <string>
 #include <tuple>
+#include <unordered_set>
 #include <vector>
 
 #include "utils.h"
 
 namespace aoc {
+  std::vector<char> get_badges(const std::vector<std::string>& rucksacks);
+  std::vector<int> get_priorites(const std::vector<char>& cs);
+  std::vector<char> get_common_items(const std::vector<std::string>& rucksacks);
   int calc_basic_round(int you, int them);
   int calc_alt_round(int you, int them);
   int calc_rps_score(const std::vector<std::tuple<int, int>>& rps, const std::function<int(int, int)>& calc);
