@@ -16,6 +16,8 @@
 #include "utils.h"
 
 namespace aoc {
+  int calc_overlapping_ranges(const std::vector<std::vector<int>>& ranges);
+  std::vector<std::vector<int>> create_ranges(const std::vector<std::vector<std::string>>& ranges);
   std::vector<char> get_badges(const std::vector<std::string>& rucksacks);
   std::vector<int> get_priorites(const std::vector<char>& cs);
   std::vector<char> get_common_items(const std::vector<std::string>& rucksacks);

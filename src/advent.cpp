@@ -1,5 +1,31 @@
 #include "advent.h"
 
+int aoc::calc_overlapping_ranges(const std::vector<std::vector<int>>& ranges) {
+  int overlapping = 0;
+  for (const auto& range : ranges) {
+    if ((range[0] >= range[2] && range[0] <= range[3]) ||
+        (range[2] >= range[0] && range[2] <= range[1])) {
+      overlapping++;
+    }
+  }
+  return overlapping;
+}
+
+std::vector<std::vector<int>> aoc::create_ranges(const std::vector<std::vector<std::string>>& ranges) {
+  std::vector<std::vector<int>> results;
+  for (const auto& r : ranges) {
+    std::vector<int> current_ranges;
+    auto first = split_on(r[0], '-');
+    auto second = split_on(r[1], '-');
+    current_ranges.push_back(std::stoi(first[0]));
+    current_ranges.push_back(std::stoi(first[1]));
+    current_ranges.push_back(std::stoi(second[0]));
+    current_ranges.push_back(std::stoi(second[1]));
+    results.push_back(current_ranges);
+  }
+  return results;
+}
+
 std::vector<char> aoc::get_badges(const std::vector<std::string>& rucksacks) {
   std::vector<char> badges;
   for (int group = 0; group < rucksacks.size() / 3; group++) {

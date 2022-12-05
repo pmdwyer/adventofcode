@@ -6,9 +6,9 @@
 
 int main()
 {
-  auto lines = aoc::get_lines("../data/aoc3-1.txt");
-  auto badges = aoc::get_badges(lines);
-  auto priorities = aoc::get_priorites(badges);
-  std::cout << std::accumulate(priorities.begin(), priorities.end(), 0) << std::endl;
+  auto lines = aoc::get_lines("../data/aoc4-1.txt");
+  auto splits = aoc::split_lines_on(lines, ',');
+  auto ranges = aoc::create_ranges(splits);
+  std::cout << aoc::calc_overlapping_ranges(ranges) << std::endl;
   return 0;
 }

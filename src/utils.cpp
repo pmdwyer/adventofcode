@@ -14,20 +14,27 @@ std::vector<std::string> aoc::get_lines(const std::string& fname) {
 }
 
 std::vector<std::string> aoc::split(const std::string& str) {
+  return split_on(str, ' ');
+}
+
+std::vector<std::string> aoc::split_on(const std::string& str, char delimiter) {
   std::stringstream ss(str);
-  std::vector<std::string> splits;
-  while (!ss.fail()) {
-    std::string s;
-    ss >> s;
-    splits.push_back(s);
+  std::vector<std::string> tokens;
+  std::string token;
+  while (std::getline(ss, token, delimiter)) {
+    tokens.push_back(token);
   }
-  return splits;
+  return tokens;
 }
 
 std::vector<std::vector<std::string>> aoc::split_lines(const std::vector<std::string>& lines) {
+  return split_lines_on(lines, ' ');
+}
+
+std::vector<std::vector<std::string>> aoc::split_lines_on(const std::vector<std::string>& lines, char delimiter) {
   std::vector<std::vector<std::string>> line_splits;
   for (const auto& line : lines) {
-    line_splits.push_back(split(line));
+    line_splits.push_back(split_on(line, delimiter));
   }
   return line_splits;
 }
