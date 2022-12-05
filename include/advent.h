@@ -7,6 +7,7 @@
 
 #include <algorithm>
 #include <functional>
+#include <ranges>
 #include <set>
 #include <string>
 #include <tuple>
@@ -16,6 +17,9 @@
 #include "utils.h"
 
 namespace aoc {
+  std::vector<std::string> make_crates(const std::vector<std::string>& lines);
+  std::vector<std::tuple<int, int, int>> make_instructions(const std::vector<std::string>& lines);
+  void do_instructions(std::vector<std::string>& crates, const std::vector<std::tuple<int, int, int>>& insts);
   int calc_overlapping_ranges(const std::vector<std::vector<int>>& ranges);
   std::vector<std::vector<int>> create_ranges(const std::vector<std::vector<std::string>>& ranges);
   std::vector<char> get_badges(const std::vector<std::string>& rucksacks);

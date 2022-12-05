@@ -1,5 +1,55 @@
 #include "advent.h"
 
+std::vector<std::string> aoc::make_crates(const std::vector<std::string>& lines) {
+  std::vector<std::string> crates(9, "");
+  int index_line = 0;
+  for ( ; index_line < lines.size(); index_line++) {
+    if (lines[index_line].empty()) {
+      break;
+    }
+  }
+  index_line--;
+  for (int i = 0; i < index_line; i++) {
+    for (int j = 0; j * 4 < lines[i].size(); j++) {
+      auto c = lines[i][j * 4 + 1];
+      if (!std::isspace(c)) {
+        crates[j] += c;
+      }
+    }
+  }
+  for (auto& crate : crates) {
+    std::reverse(crate.begin(), crate.end());
+  }
+  return crates;
+}
+
+std::vector<std::tuple<int, int, int>> aoc::make_instructions(const std::vector<std::string> &lines) {
+  std::vector<std::tuple<int, int, int>> inst;
+  int i = 0;
+  for ( ; i < lines.size(); i++) {
+    if (lines[i].empty()) {
+      break;
+    }
+  }
+  for (i++; i < lines.size(); i++) {
+    auto words = split(lines[i]);
+    inst.emplace_back(std::stoi(words[1]), std::stoi(words[3]) - 1, std::stoi(words[5]) - 1);
+  }
+  return inst;
+}
+
+void aoc::do_instructions(std::vector<std::string>& crates, const std::vector<std::tuple<int, int, int>>& insts) {
+  for (const auto& inst : insts) {
+    auto amount = std::get<0>(inst);
+    auto from = std::get<1>(inst);
+    auto to = std::get<2>(inst);
+    auto crates_to_move = crates[from].substr(crates[from].length() - amount, amount);
+    crates[from].erase(crates[from].length() - amount);
+//    std::reverse(crates_to_move.begin(), crates_to_move.end());
+    crates[to] += crates_to_move;
+  }
+}
+
 int aoc::calc_overlapping_ranges(const std::vector<std::vector<int>>& ranges) {
   int overlapping = 0;
   for (const auto& range : ranges) {
