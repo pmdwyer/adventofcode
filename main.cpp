@@ -6,16 +6,9 @@
 
 int main()
 {
-  auto lines = aoc::get_lines("../data/aoc5-1.txt");
-  auto crates = aoc::make_crates(lines);
-  for (const auto& crate : crates) {
-    std::cout << crate << std::endl;
-  }
-  std::cout << std::endl;
-  auto instructions = aoc::make_instructions(lines);
-  aoc::do_instructions(crates, instructions);
-  for (const auto& crate : crates) {
-    std::cout << crate << std::endl;
-  }
+  auto lines = aoc::get_lines("../data/aoc6-1.txt");
+  auto line = lines[0];
+  std::cout << aoc::find_small_soh(line) << std::endl;
+  std::cout << aoc::find_large_soh(line) << std::endl;
   return 0;
 }

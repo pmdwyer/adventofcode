@@ -1,5 +1,38 @@
 #include "advent.h"
 
+int aoc::find_large_soh(const std::string& data) {
+  int soh = -1;
+  std::array<int, 26> hist{};
+  for (int i = 0; i < 14; i++) {
+    hist[data[i] - 'a']++;
+  }
+  for (int i = 14; i < data.length() - 14; i++) {
+    if (std::ranges::all_of(begin(hist), end(hist), [](int i){ return i <= 1; })) {
+      soh = i;
+      break;
+    }
+    hist[data[i - 14] - 'a']--;
+    hist[data[i] - 'a']++;
+  }
+  return soh;
+}
+
+int aoc::find_small_soh(const std::string& data) {
+  int soh = -1;
+  for (int i = 0; i < data.length() - 4; i++) {
+    if (data[i] != data[i+1] &&
+        data[i] != data[i+2] &&
+        data[i] != data[i+3] &&
+        data[i+1] != data[i+2] &&
+        data[i+1] != data[i+3] &&
+        data[i+2] != data[i+3]) {
+      soh = i + 4;
+      break;
+    }
+  }
+  return soh;
+}
+
 std::vector<std::string> aoc::make_crates(const std::vector<std::string>& lines) {
   std::vector<std::string> crates(9, "");
   int index_line = 0;

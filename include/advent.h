@@ -6,6 +6,7 @@
 #define ADVENTOFCODE_ADVENT_H
 
 #include <algorithm>
+#include <array>
 #include <functional>
 #include <ranges>
 #include <set>
@@ -17,6 +18,8 @@
 #include "utils.h"
 
 namespace aoc {
+  int find_large_soh(const std::string& data);
+  int find_small_soh(const std::string& data);
   std::vector<std::string> make_crates(const std::vector<std::string>& lines);
   std::vector<std::tuple<int, int, int>> make_instructions(const std::vector<std::string>& lines);
   void do_instructions(std::vector<std::string>& crates, const std::vector<std::tuple<int, int, int>>& insts);
