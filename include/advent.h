@@ -16,8 +16,10 @@
 #include <vector>
 
 #include "utils.h"
+#include "fs.h"
 
 namespace aoc {
+  std::shared_ptr<aoc::dir> create_dir_tree(const std::vector<std::string>& lines);
   int find_large_soh(const std::string& data);
   int find_small_soh(const std::string& data);
   std::vector<std::string> make_crates(const std::vector<std::string>& lines);

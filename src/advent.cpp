@@ -1,12 +1,44 @@
 #include "advent.h"
 
+std::shared_ptr<aoc::dir> aoc::create_dir_tree(const std::vector<std::string>& lines) {
+  std::shared_ptr<dir> root = nullptr, curr = nullptr;
+  for (const auto& line : lines) {
+    std::stringstream ss(line);
+    if (ss.peek() == '$') {
+      char carat;
+      std::string cmd, dirname;
+      ss >> carat >> cmd;
+      if (cmd == "cd") {
+        ss >> dirname;
+        if (root == nullptr) {
+          root = std::make_unique<dir>(dirname);
+          curr = root;
+        }
+        if (!curr->get_dir(dirname)) {
+
+        }
+      }
+    } else if (std::isdigit(ss.peek())) {
+      int sz;
+      std::string fname;
+      ss >> sz >> fname;
+      curr->create_file(fname, sz);
+    } else if (ss.peek() == 'd') {
+      std::string cmd, dirname;
+      ss >> cmd >> dirname;
+      curr->create_subdir(dirname);
+    }
+  }
+  return root;
+}
+
 int aoc::find_large_soh(const std::string& data) {
   int soh = -1;
   std::array<int, 26> hist{};
   for (int i = 0; i < 14; i++) {
     hist[data[i] - 'a']++;
   }
-  for (int i = 14; i < data.length() - 14; i++) {
+  for (int i = 14; i < data.length(); i++) {
     if (std::ranges::all_of(begin(hist), end(hist), [](int i){ return i <= 1; })) {
       soh = i;
       break;

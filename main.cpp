@@ -6,9 +6,8 @@
 
 int main()
 {
-  auto lines = aoc::get_lines("../data/aoc6-1.txt");
-  auto line = lines[0];
-  std::cout << aoc::find_small_soh(line) << std::endl;
-  std::cout << aoc::find_large_soh(line) << std::endl;
+  auto lines = aoc::get_lines("../data/aoc7-1.txt");
+  auto root_fs = aoc::create_dir_tree(lines);
+  std::cout << root_fs->calculate_size() << std::endl;
   return 0;
 }
