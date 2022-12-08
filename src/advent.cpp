@@ -2,29 +2,28 @@
 
 std::shared_ptr<aoc::dir> aoc::create_dir_tree(const std::vector<std::string>& lines) {
   std::shared_ptr<dir> root = nullptr, curr = nullptr;
+  int sz;
+  char carat;
+  std::string fname, cmd, dirname;
   for (const auto& line : lines) {
     std::stringstream ss(line);
     if (ss.peek() == '$') {
-      char carat;
-      std::string cmd, dirname;
       ss >> carat >> cmd;
       if (cmd == "cd") {
         ss >> dirname;
-        if (root == nullptr) {
-          root = std::make_unique<dir>(dirname);
+        if (dirname == "..") {
+          curr = curr->get_parent();
+        } else if (root == nullptr) {
+          root = std::make_shared<dir>(dirname);
           curr = root;
-        }
-        if (!curr->get_dir(dirname)) {
-
+        } else {
+          curr = curr->get_subdir(dirname);
         }
       }
     } else if (std::isdigit(ss.peek())) {
-      int sz;
-      std::string fname;
       ss >> sz >> fname;
       curr->create_file(fname, sz);
     } else if (ss.peek() == 'd') {
-      std::string cmd, dirname;
       ss >> cmd >> dirname;
       curr->create_subdir(dirname);
     }

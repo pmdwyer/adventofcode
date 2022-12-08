@@ -1,7 +1,3 @@
-//
-// Created by pdwyer on 12/1/2022.
-//
-
 #ifndef ADVENTOFCODE_ADVENT_H
 #define ADVENTOFCODE_ADVENT_H
 
