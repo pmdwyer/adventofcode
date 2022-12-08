@@ -18,7 +18,7 @@ namespace aoc {
     int size;
   };
 
-class dir : public std::enable_shared_from_this<dir> {
+  class dir : public std::enable_shared_from_this<dir> {
   public:
     explicit dir(std::string n) : _subdirs{}, _files{}, _name{std::move(n)}, _parent{nullptr} {};
     dir(std::string n, std::shared_ptr<dir> parent)

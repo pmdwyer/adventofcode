@@ -13,6 +13,7 @@ target_include_directories(adventofcode
 target_sources(adventofcode
     PRIVATE
         src/fs.cpp
+        src/grid.cpp
         src/utils.cpp
         src/advent.cpp
     )
