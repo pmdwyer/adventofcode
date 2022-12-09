@@ -10,5 +10,6 @@ int main()
   auto lines = aoc::get_lines("../data/aoc8-1.txt");
   aoc::grid g(lines);
   std::cout << g.calc_visible_trees() << std::endl;
+  std::cout << g.calc_scenic_score() << std::endl;
   return 0;
 }

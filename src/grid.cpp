@@ -1,5 +1,7 @@
 #include "grid.h"
 
+#include <iostream>
+
 aoc::grid::grid(const std::vector<std::string>& text)
   : _matrix{}
 {
@@ -15,48 +17,81 @@ aoc::grid::grid(const std::vector<std::string>& text)
 int aoc::grid::calc_visible_trees() {
   int height = (int) _matrix.size();
   int width = (int) _matrix[0].size();
-  std::vector<bool> visible(width * height, false);
+  std::vector<std::vector<bool>> visible(height, std::vector<bool>(width, false));
   for (int i = 0; i < height; i++) {
-    visible[height * i + 0] = true;
-    visible[height * i + width - 1] = true;
-    // left
+    visible[i][0] = true;
+    visible[i][width - 1] = true;
+  }
+  for (int j = 0; j < width; j++) {
+    visible[0][j] = true;
+    visible[height - 1][j] = true;
+  }
+  for (int i = 1; i < height - 1; i++) {
+    int current_max = _matrix[i][0];
     for (int j = 1; j < width; j++) {
-      if (_matrix[i][j] > _matrix[i][j - 1]) {
-        visible[height * i + j] = true;
-      } else {
-        break;
+      if (_matrix[i][j] > current_max) {
+        current_max = _matrix[i][j];
+        visible[i][j] = true;
       }
     }
-    // right
+    current_max = _matrix[i][width - 1];
     for (int j = width - 2; j >= 0; j--) {
-      if (_matrix[i][j] > _matrix[i][j + 1]) {
-        visible[height * i + j] = true;
-      } else {
-        break;
+      if (_matrix[i][j] > current_max) {
+        current_max = _matrix[i][j];
+        visible[i][j] = true;
       }
     }
   }
+  for (int j = 1; j < width - 1; j++) {
+    int current_max = _matrix[0][j];
+    for (int i = 1; i < height; i++) {
+      if (_matrix[i][j] > current_max) {
+        current_max = _matrix[i][j];
+        visible[i][j] = true;
+      }
+    }
+    current_max = _matrix[height - 1][j];
+    for (int i = height - 2; i >= 0; i--) {
+      if (_matrix[i][j] > current_max) {
+        current_max = _matrix[i][j];
+        visible[i][j] = true;
+      }
+    }
+  }
+  int trees = 0;
+  for (int i = 0; i < height; i++) {
+    trees += std::count_if(visible[i].begin(), visible[i].end(), [](bool b) { return b; });
+  }
+  return trees;
+}
 
-  for (int i = 0; i < width; i++) {
-    visible[0          + width * i] = true;
-    visible[height - 1 + width * i] = true;
-    // top
-    for (int j = 1; j < height - 1; j++) {
-      if (_matrix[j][i] > _matrix[j - 1][i]) {
-        visible[height * j + i] = true;
-      } else {
-        break;
-      }
-    }
-    // bottom
-    for (int j = height - 2; j >= 0; j--) {
-      if (_matrix[j][i] > _matrix[j + 1][i]) {
-        visible[height * j + i] = true;
-      } else {
-        break;
+int aoc::grid::calc_scenic_score() {
+  int height = (int) _matrix.size();
+  int width = (int) _matrix[0].size();
+  std::vector<std::vector<int>> scores(height, std::vector<int>(width, 0));
+  for (int i = 0; i < height; i++) {
+    for (int j = 1; j < width; j++) {
+      int k = j - 1;
+      while (k >= 0) {
+        scores[i][j]++;
+        if (_matrix[i][k] >= _matrix[i][j]) {
+          break;
+        }
+        k--;
       }
     }
   }
-  auto trees = std::count_if(visible.begin(), visible.end(), [](bool v) { return v; });
-  return (int) trees;
+  for (int j = 0; j < width; j++) {
+    for (int i = 0; i < height; i++) {
+    }
+  }
+  int score = -1;
+  for (int i = 0; i < height; i++) {
+    for (int j = 0; j < width; j++) {
+      std::cout << scores[i][j] << ' ';
+      score = std::max(score, scores[i][j]);
+    }
+    std::cout << std::endl;
+  }
+  return score;
 }
