@@ -70,19 +70,31 @@ int aoc::grid::calc_scenic_score() {
   int width = (int) _matrix[0].size();
   std::vector<std::vector<int>> scores(height, std::vector<int>(width, 0));
   for (int i = 0; i < height; i++) {
-    for (int j = 1; j < width; j++) {
+    for (int j = 0; j < width; j++) {
       int k = j - 1;
-      while (k >= 0) {
-        scores[i][j]++;
-        if (_matrix[i][k] >= _matrix[i][j]) {
-          break;
-        }
+      while (k >= 0 && _matrix[i][k] < _matrix[i][j]) {
         k--;
       }
+      scores[i][j] = k < 0 ? j : j - k;
+      k = j + 1;
+      while (k < width && _matrix[i][k] < _matrix[i][j]) {
+        k++;
+      }
+      scores[i][j] *= k >= width ? k - j - 1 : k - j;
     }
   }
   for (int j = 0; j < width; j++) {
     for (int i = 0; i < height; i++) {
+      int k = i - 1;
+      while (k >= 0 && _matrix[k][j] < _matrix[i][j]) {
+        k--;
+      }
+      scores[i][j] *= k < 0 ? i : i - k;
+      k = i + 1;
+      while (k < height && _matrix[k][j] < _matrix[i][j]) {
+        k++;
+      }
+      scores[i][j] *= k >= height ? k - i - 1 : k - i;
     }
   }
   int score = -1;
