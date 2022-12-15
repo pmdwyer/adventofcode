@@ -14,6 +14,7 @@ target_sources(adventofcode
     PRIVATE
         src/fs.cpp
         src/grid.cpp
+        src/knots.cpp
         src/utils.cpp
         src/advent.cpp
     )
