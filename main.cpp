@@ -2,14 +2,16 @@
 #include <iostream>
 
 #include "utils.h"
-#include "advent.h"
-#include "grid.h"
+#include "crt.h"
 
 int main()
 {
-  auto lines = aoc::get_lines("../data/aoc8-1.txt");
-  aoc::grid g(lines);
-  std::cout << g.calc_visible_trees() << std::endl;
-  std::cout << g.calc_scenic_score() << std::endl;
+  auto lines = aoc::get_lines("../data/aoc10-1.txt");
+  auto insts = aoc::parse_instructions(lines);
+  auto output = aoc::execute(insts);
+  auto display = aoc::render(output);
+  for (const auto& line : display) {
+    std::cout << line << std::endl;
+  }
   return 0;
 }

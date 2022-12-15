@@ -17,4 +17,5 @@ target_sources(adventofcode
         src/knots.cpp
         src/utils.cpp
         src/advent.cpp
+        src/crt.cpp
     )
