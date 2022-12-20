@@ -2,16 +2,14 @@
 #include <iostream>
 
 #include "utils.h"
-#include "crt.h"
+#include "boulders.h"
 
 int main()
 {
-  auto lines = aoc::get_lines("../data/aoc10-1.txt");
-  auto insts = aoc::parse_instructions(lines);
-  auto output = aoc::execute(insts);
-  auto display = aoc::render(output);
-  for (const auto& line : display) {
-    std::cout << line << std::endl;
-  }
+  auto lines = aoc::get_lines("../data/aoc18-1.txt");
+  auto cubes = aoc::make_cubes(lines);
+  auto map = aoc::gen_cube_map(cubes);
+  std::cout << std::endl << aoc::calc_total_surface_area(map) << std::endl;
+  std::cout << std::endl << aoc::calc_actual_surface_area(map) << std::endl;
   return 0;
 }

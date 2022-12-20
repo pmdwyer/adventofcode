@@ -18,4 +18,5 @@ target_sources(adventofcode
         src/utils.cpp
         src/advent.cpp
         src/crt.cpp
+        src/boulders.cpp
     )
