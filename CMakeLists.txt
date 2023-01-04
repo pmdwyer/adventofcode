@@ -19,4 +19,5 @@ target_sources(adventofcode
         src/advent.cpp
         src/crt.cpp
         src/boulders.cpp
+        src/hill.cpp
     )
