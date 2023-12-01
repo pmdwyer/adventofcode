@@ -1,4 +1,4 @@
-#include "hill.h"
+#include "../include/hill.h"
 
 std::vector<std::vector<int>> aoc::make_map(const std::vector<std::string>& lines) {
   std::vector<std::vector<int>> heightmap{lines.size(), std::vector<int>(lines[0].size(), 0)};

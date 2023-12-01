@@ -1,4 +1,4 @@
-#include "boulders.h"
+#include "../include/boulders.h"
 
 std::vector<aoc::cube> aoc::make_cubes(const std::vector<std::string> &lines)
 {

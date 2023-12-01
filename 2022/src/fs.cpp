@@ -1,4 +1,4 @@
-#include "fs.h"
+#include "../include/fs.h"
 
 void aoc::dir::create_subdir(const std::string& name) {
   auto dir = std::ranges::find_if(_subdirs.begin(), _subdirs.end(), [&](const std::shared_ptr<aoc::dir>& d) { return d->_name == name; });

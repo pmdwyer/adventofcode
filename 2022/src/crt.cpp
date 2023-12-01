@@ -1,4 +1,4 @@
-#include "crt.h"
+#include "../include/crt.h"
 
 std::vector<aoc::inst> aoc::parse_instructions(const std::vector<std::string>& lines) {
   std::vector<inst> insts;

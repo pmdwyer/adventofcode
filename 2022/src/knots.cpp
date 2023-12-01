@@ -1,4 +1,4 @@
-#include "knots.h"
+#include "../include/knots.h"
 
 std::vector<aoc::move> aoc::make_moves(const std::vector<std::string>& lines) {
   std::vector<move> moves;
