@@ -8,7 +8,7 @@
 namespace aoc
 {
   template<class T, class V>
-  std::vector<V> map(const std::vector<T> &ts, std::function<V(const T &t)> f)
+  std::vector<V> map(std::function<V(const T &t)> f, const std::vector<T> &ts)
   {
     std::vector<V> vs(ts.size());
     std::transform(begin(ts), end(ts), begin(vs), f);
