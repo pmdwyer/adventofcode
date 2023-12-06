@@ -3,7 +3,9 @@ project(aoc23)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(aoc23 main.cpp)
+add_executable(aoc23 main.cpp
+    src/range_map.cpp
+    include/range_map.h)
 
 target_include_directories(aoc23
     PRIVATE
@@ -19,4 +21,5 @@ target_sources(aoc23
     src/day2.cpp
     src/day3.cpp
     src/day4.cpp
+    src/day5.cpp
 )

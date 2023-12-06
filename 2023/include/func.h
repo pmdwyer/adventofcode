@@ -20,6 +20,22 @@ namespace aoc
   {
     return std::accumulate(begin(ts), end(ts), 0);
   }
+
+  template<class T, class V>
+  std::vector<V> filter(std::function<bool (const T& t)> f, const std::vector<T> &ts)
+  {
+    std::vector<V> vs;
+    std::copy_if(begin(ts), end(ts), std::back_inserter(vs), f);
+    return vs;
+  }
+
+  template <class T>
+  T fold(T init, const std::vector<T>& ts) {
+    for (const auto& t : ts) {
+      init += t;
+    }
+    return init;
+  }
 }
 
 #endif //AOC23_FUNC_H

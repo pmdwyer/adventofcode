@@ -8,7 +8,7 @@
 
 namespace aoc
 {
-  int day2()
+  void day2()
   {
     auto lines = aoc::get_lines("../../2023/input/d2-1.txt");
     auto games = aoc::map<std::string, struct game>(

@@ -14,7 +14,7 @@ namespace aoc
     int b;
   };
 
-  int day2();
+  void day2();
 }
 
 #endif //ADVENTOFCODE_DAY2_H
