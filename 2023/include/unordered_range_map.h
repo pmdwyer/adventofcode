@@ -1,6 +1,7 @@
 #ifndef AOC23_UNORDERED_RANGE_MAP_H
 #define AOC23_UNORDERED_RANGE_MAP_H
 
+#include <tuple>
 #include <vector>
 
 namespace aoc {
