@@ -4,6 +4,8 @@
 #include <functional>
 #include <numeric>
 #include <vector>
+#include <algorithm>
+#include <iterator>
 
 namespace aoc
 {

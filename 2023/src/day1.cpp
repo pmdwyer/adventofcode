@@ -26,7 +26,7 @@ int aoc::convert2(const std::string& s) {
       last = s[j] - '0';
     }
   }
-  int min_idx = s.length(), max_idx = 0;
+  int min_idx = (int) s.length(), max_idx = 0;
   int min_num = 0, max_num = 0;
   for (int i = 0; i < 9; i++) {
     auto fidx = s.find(NUMBER_WORDS[i]);

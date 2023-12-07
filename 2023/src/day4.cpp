@@ -6,7 +6,7 @@
 #include "func.h"
 #include "str.h"
 #include "file.h"
-#include "math.h"
+#include "maths.h"
 
 std::vector<std::vector<std::vector<int>>> aoc::parse_input() {
   int i = 0;

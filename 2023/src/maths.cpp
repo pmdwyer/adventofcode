@@ -1,4 +1,4 @@
-#include "math.h"
+#include "maths.h"
 
 int aoc::power(int num, int exp) {
   int x = 1;
