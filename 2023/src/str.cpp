@@ -32,3 +32,10 @@ std::vector<int> aoc::get_nums(const std::string &line) {
               aoc::trim,
               aoc::split(" ", aoc::split(":", line)[1]))));
 }
+
+std::string aoc::remove(const std::string &s, const std::string &cs)
+{
+  auto res(s);
+  res.erase(std::remove_if(res.begin(), res.end(), [&](char c) { return cs.find_first_of(c) != std::string::npos; }), res.end());
+  return res;
+}

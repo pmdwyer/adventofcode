@@ -8,6 +8,7 @@ namespace aoc
 {
   std::vector<std::string> split(const std::string& token, const std::string& str);
   std::string trim(const std::string& str);
+  std::string remove(const std::string& s, const std::string& cs);
   std::vector<int> get_nums(const std::string &line);
 }
 
