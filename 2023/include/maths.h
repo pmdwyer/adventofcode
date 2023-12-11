@@ -5,6 +5,10 @@
 
 namespace aoc
 {
+  struct point {
+    int x, y;
+  };
+
   int power(int num, int exp);
 
   template <typename T>

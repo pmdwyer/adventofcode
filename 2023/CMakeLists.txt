@@ -23,4 +23,5 @@ target_sources(aoc23
     src/day6.cpp
     src/day7.cpp
     src/day8.cpp
+    src/day10.cpp
 )
