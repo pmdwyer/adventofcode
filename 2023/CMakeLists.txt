@@ -25,4 +25,5 @@ target_sources(aoc23
     src/day8.cpp
     src/day9.cpp
     src/day10.cpp
+    src/day11.cpp
 )

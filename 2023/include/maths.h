@@ -7,6 +7,9 @@ namespace aoc
 {
   struct point {
     int x, y;
+
+    point& operator=(const point& rhs) = default;
+    bool operator==(const struct point& rhs) const { return x == rhs.x && y == rhs.y; }
   };
 
   int power(int num, int exp);
@@ -33,6 +36,18 @@ namespace aoc
     }
     return l;
   }
+}
+
+namespace std
+{
+  template <>
+  struct hash<struct aoc::point> {
+    size_t operator()(const struct aoc::point& p) const {
+      size_t h1 = std::hash<int>{}(p.x);
+      size_t h2 = std::hash<int>{}(p.y);
+      return h1 ^ (h2 << 1);
+    }
+  };
 }
 
 #endif //ADVENTOFCODE_MATH_H

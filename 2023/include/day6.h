@@ -17,7 +17,7 @@ namespace aoc
         j++;
       }
       auto ways = time - j - j + 1;
-      count *= ways;
+      count *= (int) ways;
     }
     return count;
   }
