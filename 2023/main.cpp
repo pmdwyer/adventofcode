@@ -1,11 +1,11 @@
 #include <chrono>
 #include <iostream>
 
-#include "day10.h"
+#include "day9.h"
 
 int main() {
   const auto start = std::chrono::high_resolution_clock::now();
-  aoc::day10();
+  aoc::day9();
   const auto end = std::chrono::high_resolution_clock::now();
   auto dt = end - start;
   std::cout << "time taken: " << dt.count() << std::endl;
