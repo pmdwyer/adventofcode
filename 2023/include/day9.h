@@ -26,7 +26,9 @@ namespace aoc
     T v = 0, p = 0;
     for (const auto& level : levels) {
       v += level[level.size() - 1];
-      p = level[0] - p;
+    }
+    for (int i = levels.size() - 2; i >= 0; i--) {
+      p = levels[i][0] - p;
     }
     return std::make_tuple<>(v, p);
   }
