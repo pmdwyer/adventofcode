@@ -11,7 +11,6 @@ namespace aoc
 {
   void day11();
   void expand_rows(std::vector<std::string>& vs);
-  std::vector<std::string> transpose(const std::vector<std::string>& vs);
   std::vector<struct point> find_galaxies(const std::vector<std::string>& vs);
   std::vector<struct point> a_star(const std::vector<std::string>& map, const struct point& start, const struct point& finish);
   std::vector<struct point> get_neighbors(const struct point &point, int maxx, int maxy);

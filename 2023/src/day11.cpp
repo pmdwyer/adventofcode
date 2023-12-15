@@ -12,7 +12,7 @@
 
 void aoc::day11()
 {
-  auto lines = aoc::map<std::string, std::string>(aoc::trim, aoc::get_lines("../../2023/input/day11-1.txt"));
+  auto lines = aoc::map<std::string, std::string>(aoc::trim, aoc::get_lines("../../2023/input/d11-1.txt"));
 //  expand_rows(lines);
 //  lines = transpose(lines);
 //  expand_rows(lines);
@@ -72,19 +72,6 @@ void aoc::expand_rows(std::vector<std::string>& vs)
       i++;
     }
   }
-}
-
-std::vector<std::string> aoc::transpose(const std::vector<std::string>& vs)
-{
-  std::vector<std::string> ts;
-  for (int i = 0; i < vs[0].length(); i++) {
-    std::string temp;
-    for (int j = 0; j < vs.size(); j++) {
-      temp += vs[j][i];
-    }
-    ts.push_back(temp);
-  }
-  return ts;
 }
 
 std::vector<aoc::point> aoc::find_galaxies(const std::vector<std::string>& vs)

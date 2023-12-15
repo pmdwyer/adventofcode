@@ -39,3 +39,16 @@ std::string aoc::remove(const std::string &s, const std::string &cs)
   res.erase(std::remove_if(res.begin(), res.end(), [&](char c) { return cs.find_first_of(c) != std::string::npos; }), res.end());
   return res;
 }
+
+std::vector<std::string> aoc::transpose(const std::vector<std::string>& vs)
+{
+  std::vector<std::string> ts;
+  for (int i = 0; i < vs[0].length(); i++) {
+    std::string temp;
+    for (int j = 0; j < vs.size(); j++) {
+      temp += vs[j][i];
+    }
+    ts.push_back(temp);
+  }
+  return ts;
+}
